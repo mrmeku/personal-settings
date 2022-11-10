@@ -1,0 +1,1 @@
+A repo to track things I want common across computers such as my bash / git setups

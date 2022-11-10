@@ -1,0 +1,25 @@
+[user]
+	email = mrmeku@gmail.com
+	name = Daniel Muller
+[push]
+	default = current
+[pull]
+	rebase = true
+[branch]
+	autosetuprebase = always
+[alias]
+	amend = "!git add . && git commit --amend --no-edit"
+	reset-origin-main = "!git fetch origin main && git reset --hard origin/main"
+	new-branch = "!git add . && git stash && git checkout -b $1 && shift && git reset-origin-main && git stash pop && git add ."
+	sync = "pull --rebase origin main"
+	review = "push -o trace origin HEAD:refs/for/main%publish-comments"
+	danger-review = "!git amend && git review"
+	fetchout = "!SHA=$1; git fetch origin ${SHA} && git checkout"
+	danger-remove-all-branches = "!git branch | xargs git branch -D"
+	extract = "!git reset --soft HEAD~ && git restore --staged . && git commit --allow-empty -C ORIG_HEAD"
+[credential]
+	helper = store
+[rebase]
+	autosquash = true
+[core]
+	editor = code --wait
